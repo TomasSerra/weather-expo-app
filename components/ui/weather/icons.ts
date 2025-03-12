@@ -34,7 +34,7 @@ export const icons: Record<string, Record<IconsName, { uri: string }>> = {
 };
 
 export const sizes: Record<IconSize, number> = {
-  [IconSize["small"]]: 50,
-  [IconSize["medium"]]: 100,
-  [IconSize["large"]]: 150,
+  [IconSize["small"]]: 40,
+  [IconSize["medium"]]: 80,
+  [IconSize["large"]]: 120,
 };
