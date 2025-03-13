@@ -2,9 +2,9 @@ import ThemedText, { FontSize } from "@/components/common/text/ThemedText";
 import { StyleSheet, View } from "react-native";
 
 interface TemperatureProps {
-  temperature: number;
-  maxTemperature: number;
-  minTemperature: number;
+  temperature?: number;
+  maxTemperature?: number;
+  minTemperature?: number;
 }
 
 const Temperature = ({
@@ -12,6 +12,9 @@ const Temperature = ({
   maxTemperature,
   minTemperature,
 }: TemperatureProps) => {
+  maxTemperature = Math.round(maxTemperature!) || 0;
+  minTemperature = Math.round(minTemperature!) || 0;
+  temperature = Math.round(temperature!) || 0;
   return (
     <View style={styles.container}>
       <ThemedText size={FontSize.xxl}>{temperature}°</ThemedText>

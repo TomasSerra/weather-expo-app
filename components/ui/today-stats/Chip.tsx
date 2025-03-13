@@ -8,8 +8,8 @@ import Feather from "@expo/vector-icons/Feather";
 
 interface ChipProps {
   type: ChipType;
-  value: string | number;
-  unit: ChipUnit;
+  value?: string | number;
+  unit?: ChipUnit | undefined;
 }
 
 const getIcon = (
@@ -43,7 +43,9 @@ const Chip = ({ type, value, unit }: ChipProps) => {
   return (
     <View style={styles.container}>
       {getIcon(type, iconSize, theme.colors.text)}
-      <ThemedText size={FontSize.s}>{`${value} ${unit}`}</ThemedText>
+      <ThemedText size={FontSize.s}>{`${value} ${
+        unit ? unit : ""
+      }`}</ThemedText>
     </View>
   );
 };

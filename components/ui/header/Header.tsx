@@ -6,19 +6,18 @@ import EvilIcons from "@expo/vector-icons/EvilIcons";
 import { useTheme } from "@/components/context/ThemeContext";
 import ThemedText, { FontSize } from "@/components/common/text/ThemedText";
 
-const Header = () => {
+interface HeaderProps {
+  city?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ city }) => {
   const { theme } = useTheme();
   const iconSize = 24;
   return (
     <View style={styles.container}>
       <View style={styles.locationContainer}>
         <EvilIcons name="location" size={iconSize} color={theme.colors.text} />
-        <ThemedText size={FontSize.m}>Buenos Aires</ThemedText>
-        <Entypo
-          name="chevron-small-down"
-          size={iconSize}
-          color={theme.colors.text}
-        />
+        <ThemedText size={FontSize.m}>{city}</ThemedText>
       </View>
       <Pressable>
         <Ionicons

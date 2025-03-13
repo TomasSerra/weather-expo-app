@@ -1,9 +1,9 @@
 export enum IconsName {
-  "sunny" = "sunny",
-  "cloudy" = "cloudy",
-  "partly cloudy" = "partly cloudy",
-  "light rain" = "light rain",
-  "heavy rain" = "heavy rain",
+  "Sunny" = "sunny",
+  "Cloudy" = "cloudy",
+  "Partly cloudy" = "partly cloudy",
+  "Light rain" = "light rain",
+  "Heavy rain" = "heavy rain",
 }
 
 export enum IconSize {
@@ -14,27 +14,27 @@ export enum IconSize {
 
 export const icons: Record<string, Record<IconsName, { uri: string }>> = {
   day: {
-    [IconsName["sunny"]]: require("@/assets/icons/weather/day/sunny.png"),
-    [IconsName["cloudy"]]: require("@/assets/icons/weather/day/cloudy.png"),
+    [IconsName["Sunny"]]: require("@/assets/icons/weather/day/sunny.png"),
+    [IconsName["Cloudy"]]: require("@/assets/icons/weather/day/cloudy.png"),
     [IconsName[
-      "partly cloudy"
+      "Partly cloudy"
     ]]: require("@/assets/icons/weather/day/partly_cloudy.png"),
-    [IconsName["light rain"]]: require("@/assets/icons/weather/day/rainy.png"),
+    [IconsName["Light rain"]]: require("@/assets/icons/weather/day/rainy.png"),
     [IconsName[
-      "heavy rain"
+      "Heavy rain"
     ]]: require("@/assets/icons/weather/day/rain_storm.png"),
   },
   night: {
-    [IconsName["sunny"]]: require("@/assets/icons/weather/night/moon.png"),
-    [IconsName["cloudy"]]: require("@/assets/icons/weather/night/cloudy.png"),
+    [IconsName["Sunny"]]: require("@/assets/icons/weather/night/moon.png"),
+    [IconsName["Cloudy"]]: require("@/assets/icons/weather/night/cloudy.png"),
     [IconsName[
-      "partly cloudy"
+      "Partly cloudy"
     ]]: require("@/assets/icons/weather/night/partly_cloudy.png"),
     [IconsName[
-      "light rain"
+      "Light rain"
     ]]: require("@/assets/icons/weather/night/rainy.png"),
     [IconsName[
-      "heavy rain"
+      "Heavy rain"
     ]]: require("@/assets/icons/weather/night/rain_storm.png"),
   },
 };

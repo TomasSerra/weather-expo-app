@@ -1,3 +1,5 @@
+import { IconsName } from "@/components/ui/weather/icons";
+
 interface WeatherCondition {
   text: string;
   icon: string;
@@ -37,13 +39,7 @@ interface Astro {
   is_sun_up: number;
 }
 
-interface ForecastDayCondition {
-  text: string;
-  icon: string;
-  code: number;
-}
-
-interface ForecastDay {
+export interface ForecastDay {
   date: string;
   date_epoch: number;
   day: {
@@ -59,11 +55,11 @@ interface ForecastDay {
     daily_chance_of_rain: number;
     daily_will_it_snow: number;
     daily_chance_of_snow: number;
-    condition: ForecastDayCondition;
+    condition: WeatherCondition;
     uv: number;
   };
   astro: Astro;
-  hour: Array<{
+  hour: {
     time_epoch: number;
     time: string;
     temp_c: number;
@@ -100,7 +96,7 @@ interface ForecastDay {
     uv: number;
     short_rad: number;
     diff_rad: number;
-  }>;
+  }[];
 }
 
 export interface WeatherData {

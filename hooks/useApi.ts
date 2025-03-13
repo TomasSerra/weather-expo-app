@@ -18,12 +18,12 @@ const useApi = () => {
     setError(null);
 
     const separator = endpoint.includes("?") ? "&" : "?";
-    const urlWithKey = `${API_BASE_URL}${endpoint}${separator}key=${API_KEY}`;
+    const url = `${API_BASE_URL}${endpoint}${separator}key=${API_KEY}`;
 
     try {
       const response = await axios({
         method,
-        url: urlWithKey,
+        url,
         data,
         ...config,
       });

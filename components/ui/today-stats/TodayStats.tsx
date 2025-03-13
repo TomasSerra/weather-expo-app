@@ -4,15 +4,15 @@ import Chip, { ChipType, ChipUnit } from "./Chip";
 import { StyleSheet } from "react-native";
 
 interface TodayStatsProps {
-  rainProbability: number;
-  windSpeed: number;
-  sunsetHour: string;
+  rainProbability?: number;
+  windSpeed?: number;
+  sunsetHour?: string;
 }
 
 const TodayStats: React.FC<TodayStatsProps> = ({
-  rainProbability,
-  windSpeed,
-  sunsetHour,
+  rainProbability = 0,
+  windSpeed = 0,
+  sunsetHour = 0,
 }) => {
   return (
     <Box style={styles.container}>
@@ -22,7 +22,7 @@ const TodayStats: React.FC<TodayStatsProps> = ({
         unit={ChipUnit.percentage}
       />
       <Chip type={ChipType.wind} value={windSpeed} unit={ChipUnit.kmh} />
-      <Chip type={ChipType.sunset} value={sunsetHour} unit={ChipUnit.hs} />
+      <Chip type={ChipType.sunset} value={sunsetHour} />
     </Box>
   );
 };

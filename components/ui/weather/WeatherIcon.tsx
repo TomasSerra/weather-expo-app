@@ -4,7 +4,7 @@ import { icons, sizes, IconSize, IconsName } from "./icons";
 import { useTheme } from "@/components/context/ThemeContext";
 
 interface WeatherIconProps {
-  name: IconsName;
+  name?: IconsName;
   size?: IconSize;
 }
 
@@ -14,7 +14,7 @@ const WeatherIcon: React.FC<WeatherIconProps> = ({
 }) => {
   const { isDay } = useTheme();
   const dayOrNight: string = isDay() ? "day" : "night";
-  const imageUri = icons[dayOrNight][name];
+  const imageUri = name ? icons[dayOrNight][name] : { uri: "" };
   const sizeNumber = sizes[size];
   const styleSize = { width: sizeNumber, height: sizeNumber };
 

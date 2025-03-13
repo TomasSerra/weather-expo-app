@@ -24,43 +24,43 @@ const NextForecast: React.FC<NextForecastProps> = ({}) => {
       <View style={styles.itemsContainer}>
         <Item
           day="Monday"
-          weather={IconsName.cloudy}
+          weather={IconsName.Cloudy}
           minTemperture={10}
           maxTemperture={20}
         />
         <Item
           day="Tuesday"
-          weather={IconsName.sunny}
+          weather={IconsName.Sunny}
           minTemperture={10}
           maxTemperture={20}
         />
         <Item
           day="Wednesday"
-          weather={IconsName["light rain"]}
+          weather={IconsName["Light rain"]}
           minTemperture={10}
           maxTemperture={20}
         />
         <Item
           day="Thursday"
-          weather={IconsName["partly cloudy"]}
+          weather={IconsName["Partly cloudy"]}
           minTemperture={10}
           maxTemperture={20}
         />
         <Item
           day="Friday"
-          weather={IconsName["partly cloudy"]}
+          weather={IconsName["Partly cloudy"]}
           minTemperture={10}
           maxTemperture={20}
         />
         <Item
           day="Saturday"
-          weather={IconsName["heavy rain"]}
+          weather={IconsName["Heavy rain"]}
           minTemperture={10}
           maxTemperture={20}
         />
         <Item
           day="Sunday"
-          weather={IconsName.cloudy}
+          weather={IconsName.Cloudy}
           minTemperture={10}
           maxTemperture={20}
         />
