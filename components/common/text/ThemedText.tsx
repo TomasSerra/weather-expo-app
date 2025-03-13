@@ -1,9 +1,9 @@
 import { useTheme } from "@/components/context/ThemeContext";
-import { Text, TextProps } from "react-native";
+import { StyleProp, Text, TextProps, TextStyle } from "react-native";
 
 interface ThemedTextProps extends TextProps {
   size?: FontSize;
-  style?: object;
+  style?: StyleProp<TextStyle>;
 }
 
 export enum FontSize {

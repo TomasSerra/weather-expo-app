@@ -7,9 +7,19 @@ import Header from "@/components/ui/header/Header";
 import Temperature from "@/components/ui/temperature/Temperature";
 import TodayStats from "@/components/ui/today-stats/TodayStats";
 import TodayClimate from "@/components/ui/today-climate/TodayClimate";
+import NextForecast from "@/components/ui/next-forecast/NextForecast";
+import { useEffect } from "react";
+import useWeatherApi from "@/hooks/useWeatherApi";
 
 export default function Index() {
   const { theme, changeTheme } = useTheme();
+  const { getForecastWeatherData } = useWeatherApi();
+
+  useEffect(() => {
+    getForecastWeatherData("Buenos Aires").then((data) => {
+      console.log(data);
+    });
+  }, []);
 
   return (
     <LinearGradient
@@ -33,6 +43,7 @@ export default function Index() {
         </View>
         <TodayStats rainProbability={5} windSpeed={25} sunsetHour="19:55" />
         <TodayClimate date="Mar, 12" />
+        <NextForecast />
       </View>
     </LinearGradient>
   );

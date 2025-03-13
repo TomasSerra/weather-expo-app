@@ -2,7 +2,9 @@ export const themes = {
   day: {
     colors: {
       primary: "#1A77F2",
+      softSecondary: "#2E93CB",
       secondary: "#288DC4",
+      terciary: "#66BEFE",
       text: "#fff",
     },
     bgGradient: {
@@ -15,6 +17,8 @@ export const themes = {
     colors: {
       primary: "#08244F",
       secondary: "#0D3989",
+      softSecondary: "#174894",
+      terciary: "#5096FF",
       text: "#fff",
     },
     bgGradient: {

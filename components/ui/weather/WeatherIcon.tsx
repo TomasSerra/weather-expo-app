@@ -1,19 +1,19 @@
 import React from "react";
 import { Image, View } from "react-native";
 import { icons, sizes, IconSize, IconsName } from "./icons";
+import { useTheme } from "@/components/context/ThemeContext";
 
 interface WeatherIconProps {
   name: IconsName;
   size?: IconSize;
-  isday?: boolean;
 }
 
 const WeatherIcon: React.FC<WeatherIconProps> = ({
   name,
   size = IconSize.medium,
-  isday = true,
 }) => {
-  const dayOrNight: string = isday ? "day" : "night";
+  const { isDay } = useTheme();
+  const dayOrNight: string = isDay() ? "day" : "night";
   const imageUri = icons[dayOrNight][name];
   const sizeNumber = sizes[size];
   const styleSize = { width: sizeNumber, height: sizeNumber };

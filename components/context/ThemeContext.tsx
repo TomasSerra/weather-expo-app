@@ -1,10 +1,18 @@
 import { themes } from "@/util/const/colors";
 import React, { createContext, useContext, useState } from "react";
 
-const ThemeContext = createContext({
+interface ThemeContextType {
+  theme: typeof themes.day;
+  toggleTheme: () => void;
+  changeTheme: (theme: "day" | "night") => void;
+  isDay: () => boolean;
+}
+
+const ThemeContext = createContext<ThemeContextType>({
   theme: themes.day,
   toggleTheme: () => {},
   changeTheme: (theme: "day" | "night") => {},
+  isDay: () => true,
 });
 
 export const useTheme = () => useContext(ThemeContext);
@@ -22,8 +30,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     setTheme(themes[theme]);
   };
 
+  const isDay = () => theme === themes.day;
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, changeTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, changeTheme, isDay }}>
       {children}
     </ThemeContext.Provider>
   );

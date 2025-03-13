@@ -1,10 +1,8 @@
 import { useTheme } from "@/components/context/ThemeContext";
 import { StyleProp, View, ViewStyle, DimensionValue } from "react-native";
 
-interface BoxProps {
+interface BoxProps extends ViewStyle {
   children: React.ReactNode;
-  width?: DimensionValue;
-  height?: DimensionValue;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -19,7 +17,7 @@ const Box: React.FC<BoxProps> = ({
     <View
       style={[
         {
-          backgroundColor: theme.colors.secondary,
+          backgroundColor: `${theme.colors.secondary}CC`,
           borderRadius: 20,
           padding: 14,
           alignItems: "center",
