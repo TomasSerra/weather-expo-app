@@ -6,9 +6,19 @@ import {
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
 import useAuth from "@/hooks/useAuth";
+import { useEffect } from "react";
 
 export default function RootLayout() {
   const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading) {
+      if (!user) {
+        router.replace("/login");
+      }
+    }
+  }, [user, loading]);
 
   const [fontsLoaded] = useFonts({
     InterRegular: Inter_400Regular,
@@ -25,7 +35,9 @@ export default function RootLayout() {
             <Stack.Screen name="login" options={{ headerShown: false }} />
             <Stack.Screen name="register" options={{ headerShown: false }} />
           </>
-        ) : null}
+        ) : (
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+        )}
       </Stack>
     </ThemeProvider>
   );

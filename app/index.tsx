@@ -2,7 +2,6 @@ import { useTheme } from "@/components/context/ThemeContext";
 import { IconSize, IconsName } from "@/components/ui/weather/icons";
 import WeatherIcon from "@/components/ui/weather/WeatherIcon";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import Header from "@/components/ui/header/Header";
 import Temperature from "@/components/ui/temperature/Temperature";
 import TodayStats from "@/components/ui/today-stats/TodayStats";
@@ -12,8 +11,6 @@ import { useEffect, useState } from "react";
 import useWeatherApi from "@/hooks/useWeatherApi";
 import * as Location from "expo-location";
 import { WeatherData } from "@/hooks/weather.type";
-import { useRootNavigationState, useRouter } from "expo-router";
-import useAuth from "@/hooks/useAuth";
 import GradientBackground from "@/components/common/background/GradientBackground";
 
 export default function Index() {
@@ -22,18 +19,6 @@ export default function Index() {
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [hour, setHour] = useState<string>("");
-
-  const { user } = useAuth();
-  const router = useRouter();
-  const navigationState = useRootNavigationState();
-
-  useEffect(() => {
-    if (navigationState?.key && !user) {
-      router.replace("/login");
-    }
-  }, [user, navigationState?.key]);
-
-  if (!navigationState?.key || !user) return null;
 
   useEffect(() => {
     fetchHour();

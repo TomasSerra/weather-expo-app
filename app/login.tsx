@@ -20,12 +20,18 @@ const Login = () => {
   const { theme } = useTheme();
   const router = useRouter();
 
+  const handleLogin = (email: string, password: string) => {
+    login(email, password).then(() => {
+      router.replace("/");
+    });
+  };
+
   return (
     <GradientBackground style={styles.gradient}>
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={validationSchema}
-        onSubmit={(values) => login(values.email, values.password)}
+        onSubmit={(values) => handleLogin(values.email, values.password)}
       >
         {({
           handleChange,
