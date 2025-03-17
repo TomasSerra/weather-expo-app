@@ -5,22 +5,37 @@ import WeatherIcon from "../weather/WeatherIcon";
 import ThemedText, { FontSize } from "@/components/common/text/ThemedText";
 
 interface ItemProps {
-  day: string;
+  date_epoch: number;
   weather: IconsName;
   minTemperture: number;
   maxTemperture: number;
 }
 
 const Item: React.FC<ItemProps> = ({
-  day,
+  date_epoch,
   weather,
   minTemperture,
   maxTemperture,
 }) => {
+  const getDay = () => {
+    const date = new Date(date_epoch * 1000);
+
+    const days = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+
+    return days[date.getDay()];
+  };
   return (
     <View style={styles.container}>
       <View style={styles.dayContainer}>
-        <ThemedText size={FontSize.s}>{day}</ThemedText>
+        <ThemedText size={FontSize.s}>{getDay()}</ThemedText>
       </View>
       <View style={styles.iconContainer}>
         <WeatherIcon name={weather} size={IconSize.small} />

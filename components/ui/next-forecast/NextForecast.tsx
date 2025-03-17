@@ -28,7 +28,7 @@ const NextForecast: React.FC<NextForecastProps> = ({ data }) => {
         {data?.map((item, index) => (
           <Item
             key={index}
-            day={item.date.replace("-", "/")}
+            date_epoch={item.date_epoch}
             weather={
               IconsName[
                 item.day.condition.text.trim() as keyof typeof IconsName

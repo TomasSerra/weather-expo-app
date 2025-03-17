@@ -28,6 +28,7 @@ export default function Index() {
       const lon = location?.coords.longitude;
       getForecastWeatherData(`${lat},${lon}`, 7).then((data) => {
         setWeatherData(data);
+        console.log(data);
         changeTheme(data?.current.is_day ? "day" : "night");
       });
     });

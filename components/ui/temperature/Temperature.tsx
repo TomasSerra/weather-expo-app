@@ -20,8 +20,8 @@ const Temperature = ({
       <ThemedText size={FontSize.xxl}>{temperature}°</ThemedText>
       <ThemedText size={FontSize.m}>Precipitations</ThemedText>
       <View style={styles.row}>
-        <ThemedText size={FontSize.m}>Max.: {maxTemperature}°</ThemedText>
         <ThemedText size={FontSize.m}>Min.: {minTemperature}°</ThemedText>
+        <ThemedText size={FontSize.m}>Max.: {maxTemperature}°</ThemedText>
       </View>
     </View>
   );
