@@ -22,7 +22,9 @@ const Item: React.FC<ItemProps> = ({
       <View style={styles.dayContainer}>
         <ThemedText size={FontSize.s}>{day}</ThemedText>
       </View>
-      <WeatherIcon name={weather} size={IconSize.small} />
+      <View style={styles.iconContainer}>
+        <WeatherIcon name={weather} size={IconSize.small} />
+      </View>
       <View style={styles.tempContainer}>
         <ThemedText size={FontSize.s} style={{ opacity: 0.8 }}>
           {minTemperture}°C
@@ -43,11 +45,18 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   dayContainer: {
-    width: "30%",
+    flex: 1,
+  },
+  iconContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   tempContainer: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-end",
     gap: 10,
+    flex: 1,
   },
 });

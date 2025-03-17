@@ -35,11 +35,10 @@ const TodayClimate: React.FC<TodayClimateProps> = ({
     return `${hour}:${minutes < 10 ? "0" + minutes : minutes} ${ampm}`;
   };
 
-  const filteredData = data?.hour?.filter((item) => {
+  const filteredData = data?.hour?.filter((item, index) => {
     const itemTime = new Date(item.time);
     const itemHour = itemTime.getHours();
     const itemMinute = itemTime.getMinutes();
-
     return (
       itemHour + 1 > currentHour ||
       (itemHour === currentHour && itemMinute >= currentMinute)
@@ -64,9 +63,14 @@ const TodayClimate: React.FC<TodayClimateProps> = ({
                 <Chip
                   key={index}
                   temperature={Math.round(item.temp_c)}
-                  weather={IconsName[item.condition.text]}
+                  weather={
+                    IconsName[
+                      item.condition.text.trim() as keyof typeof IconsName
+                    ]
+                  }
                   hour={formatedDateHour(item.time)}
                   now={isNow(item.time)}
+                  dayOrNight={item.is_day ? "day" : "night"}
                 />
               ))}
             </ScrollView>
@@ -92,6 +96,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 20,
+    gap: 10,
   },
 });

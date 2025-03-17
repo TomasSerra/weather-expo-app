@@ -12,6 +12,9 @@ import { useEffect, useState } from "react";
 import useWeatherApi from "@/hooks/useWeatherApi";
 import * as Location from "expo-location";
 import { WeatherData } from "@/hooks/weather.type";
+import { useRootNavigationState, useRouter } from "expo-router";
+import useAuth from "@/hooks/useAuth";
+import GradientBackground from "@/components/common/background/GradientBackground";
 
 export default function Index() {
   const { theme, changeTheme } = useTheme();
@@ -19,6 +22,18 @@ export default function Index() {
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [hour, setHour] = useState<string>("");
+
+  const { user } = useAuth();
+  const router = useRouter();
+  const navigationState = useRootNavigationState();
+
+  useEffect(() => {
+    if (navigationState?.key && !user) {
+      router.replace("/login");
+    }
+  }, [user, navigationState?.key]);
+
+  if (!navigationState?.key || !user) return null;
 
   useEffect(() => {
     fetchHour();
@@ -57,12 +72,7 @@ export default function Index() {
   };
 
   return (
-    <LinearGradient
-      colors={[...theme.bgGradient.colors] as [string, string, ...string[]]}
-      start={theme.bgGradient.start}
-      end={theme.bgGradient.end}
-      style={[styles.gradient]}
-    >
+    <GradientBackground style={styles.gradient}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={{
@@ -74,7 +84,11 @@ export default function Index() {
         <Header city={weatherData?.location.region} />
         <View style={styles.temperatureContainer}>
           <WeatherIcon
-            name={IconsName[weatherData?.current.condition.text]} //TODO: Fix this
+            name={
+              IconsName[
+                weatherData?.current.condition.text?.trim() as keyof typeof IconsName
+              ]
+            }
             size={IconSize.large}
           />
           <Temperature
@@ -91,9 +105,9 @@ export default function Index() {
           sunsetHour={weatherData?.forecast.forecastday[0].astro.sunset}
         />
         <TodayClimate hour={hour} data={weatherData?.forecast.forecastday[0]} />
-        <NextForecast />
+        <NextForecast data={weatherData?.forecast.forecastday} />
       </ScrollView>
-    </LinearGradient>
+    </GradientBackground>
   );
 }
 

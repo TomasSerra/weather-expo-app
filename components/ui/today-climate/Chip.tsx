@@ -10,6 +10,7 @@ interface ChipProps {
   weather: IconsName;
   hour: string;
   now?: boolean;
+  dayOrNight?: "day" | "night";
 }
 
 const Chip: React.FC<ChipProps> = ({
@@ -17,6 +18,7 @@ const Chip: React.FC<ChipProps> = ({
   weather,
   hour,
   now = false,
+  dayOrNight = "day",
 }) => {
   const { theme } = useTheme();
   return (
@@ -30,7 +32,11 @@ const Chip: React.FC<ChipProps> = ({
       ]}
     >
       <ThemedText>{temperature}°C</ThemedText>
-      <WeatherIcon name={weather} size={IconSize.small} />
+      <WeatherIcon
+        name={weather}
+        size={IconSize.small}
+        dayOrNight={dayOrNight}
+      />
       <ThemedText size={FontSize.s}>{hour}</ThemedText>
     </View>
   );

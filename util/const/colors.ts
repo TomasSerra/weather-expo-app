@@ -6,6 +6,7 @@ export const themes = {
       secondary: "#288DC4",
       terciary: "#66BEFE",
       text: "#fff",
+      error: "#C62828",
     },
     bgGradient: {
       start: { x: 0, y: 0 },
@@ -20,6 +21,7 @@ export const themes = {
       softSecondary: "#174894",
       terciary: "#5096FF",
       text: "#fff",
+      error: "#C62828",
     },
     bgGradient: {
       start: { x: 0, y: 0 },
